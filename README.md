@@ -3,7 +3,7 @@ springboot angular4 mysql redis spring security Java Mail angular4  Paypal Sdk  
 
 
 
-![alt text](https://raw.githubusercontent.com/alaaeddinezammel/springAngularIntegration/blob/master/img/git1.PNG)
+![alt text](https://raw.githubusercontent.com/alaaeddinezammel/springAngularIntegration/master/img/git1.PNG)
 
 
 
