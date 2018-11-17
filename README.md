@@ -20,7 +20,7 @@ for front app (angular 4)
 
 install angular Cli
 
-browse to front project in my repositories 'https://github.com/alaaeddinezammel/spring_boot_angular4_mysql-frontAngular'
+browse to front folder  
 
 run npm install 
 
