@@ -1,0 +1,16 @@
+<mat-progress-spinner color="accent" mode="indeterminate" [style.display]="spinnerVisibility" class="spinner">
+</mat-progress-spinner>
+<div fxLayout="column" fxFlex *ngIf="booksList.length > 0 ">
+  <h2 class="page-title">Books List Page</h2>
+  <section fxLayout="row" fxLayoutWrap fxLayout.sm="column" fxLayoutGap="16px" fxLayoutAlign="center">
+    <mat-card class="book-card" *ngFor="let book of booksList">
+      <img mat-card-image class="img-responsive" src="{{serverPath}}/image/book/{{book.id}}.png">
+   
+      <mat-card-title-group>
+        <mat-card-title>{{book.title}}</mat-card-title>
+        <mat-card-subtitle>{{book.author}}</mat-card-subtitle>
+        
+    </mat-card-title-group>
+    </mat-card>
+  </section>
+</div>

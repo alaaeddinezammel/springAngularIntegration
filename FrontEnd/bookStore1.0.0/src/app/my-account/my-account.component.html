@@ -1,0 +1,91 @@
+
+
+						<mat-tab-group>
+							<br><br>
+							<mat-tab label="Login">
+								<div fxFlex class="master-detail-container">
+									<br><br>	<br><br>
+									<div *ngIf="loginError" style="color:red;">
+										Incorrect username or password.
+									</div>
+
+									<form role="form" (ngSubmit)="onLogin()">
+										<div class="form-group">
+											<mat-input-container fxFlex>
+												<label for ="username">Username *</label>
+
+												<input  matInput id="username" name="username" [(ngModel)]="credential.username" required="required" autofocus="autofocus">
+											</mat-input-container>
+
+										</div>
+										<div class="form-group">
+											<mat-input-container fxFlex>
+												<label for ="password">Password *</label>
+												<input matInput type="password"  id="password" name="password" [(ngModel)]="credential.password" required="required" autofocus="autofocus">
+											</mat-input-container>
+											<br><br>
+										</div>
+										<div fxFlexAlign="end">
+											<button mat-raised-button color="accent" type="submit" class="mat-primary">Log In</button>
+										</div>
+
+									</form>
+								</div>
+							</mat-tab>
+
+
+
+							<mat-tab label="New Account">
+								<div fxFlex class="master-detail-container">
+									<br><br>	<br><br>
+									<div class="alert alert-info" *ngIf="emailSent">An email has been sent to the email address you just registered. Please validate your email adderss and update your password info.</div>
+									<form (ngSubmit)="onNewAccount()">
+										<div class="form-group">
+											<mat-input-container fxFlex>
+												<label for="newUsername">Username *</label>&nbsp;<span *ngIf="usernameExists" style="color:red;">Username already exists. Choose a different one.</span>
+												<input type="text" matInput  id="newUsername" name="username" [(ngModel)]="username" required="required" >
+											</mat-input-container>
+										</div>
+										<div class="form-group">
+											<mat-input-container fxFlex>
+												<label for="email">Email Address *</label>&nbsp;<span *ngIf="emailExists" style="color:red;">Email already exists. Choose a different one.</span>
+												<input type="email" matInput  id="email" name="email" [(ngModel)]="email" required="required" >
+											</mat-input-container>
+										</div>
+										<div fxFlexAlign="end">
+											<button mat-raised-button color="accent" type="submit" class="mat-primary">Create new account</button>
+										</div>
+
+									</form>
+								</div>
+							</mat-tab>
+
+							
+
+
+
+							<mat-tab label="Forget Password">
+
+								<div fxFlex class="master-detail-container">
+
+									<br><br>	<br><br>
+									<div class="alert alert-warning" *ngIf="emailNotExists">Email doesn't exists.</div>
+									<div class="alert alert-success" *ngIf="forgetPasswordEmailSent">Email sent.</div>
+									
+									<form (ngSubmit)="onForgetPassword()">
+										<div class="form-group">
+											<mat-input-container fxFlex>
+												<label style="color:#828282;" for="recoverEmail">Enter your registered email address*</label>
+												<input type="email" class="form-control" matInput id="recoverEmail" name="recoverEmail" [(ngModel)]="recoverEmail" required="required" >
+											</mat-input-container>
+										</div>
+										<div fxFlexAlign="end">
+											<button mat-raised-button color="accent" type="submit" class="mat-primary">Submit</button>
+										</div>
+									</form>
+								</div>
+							</mat-tab>
+
+
+							<br><br>	<br><br>
+						</mat-tab-group>

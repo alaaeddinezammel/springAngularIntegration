@@ -1,0 +1,54 @@
+<div fxLayout="column" fxFlex>
+
+  <mat-toolbar [hidden]="!loggedIn" color="primary">
+    <button  mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Book Store</span>
+
+ <span class="spacer"></span>
+
+
+  <div class="btn-toolbar">
+  <div class="btn-group">
+
+
+   
+    <button  [disabled]="!loggedIn" mat-mini-fab routerLink="/shoppingCart">
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+
+        <button  [disabled]="!loggedIn" mat-mini-fab (click)="openAddBookDialog()">
+      <mat-icon>add</mat-icon>
+    </button>
+
+     <button  [disabled]="loggedIn" mat-mini-fab routerLink="/myAccount">
+      <mat-icon>supervisor_account</mat-icon>
+    </button>
+
+  </div>
+</div>
+  
+    <span [hidden]="loggedIn"> <a mat-button routerLink="/login">LogIn</a></span>   
+
+    <span [hidden]="!loggedIn"> <a mat-button (click)="logout()">Logout</a></span>  
+
+    
+  </mat-toolbar>
+
+  <mat-sidenav-container fxFlex>
+    <mat-sidenav mode="over" #sidenav>
+      <mat-nav-list>
+        <a mat-list-item [href]="link.path" *ngFor="let link of links"> {{ link.name }} </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <div class="content" fxLayout="column" fxFlex>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-container>
+
+</div>
+
+
+
+

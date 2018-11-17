@@ -1,0 +1,55 @@
+<mat-progress-spinner color="accent" mode="indeterminate" [style.display]="spinnerVisibility" class="spinner">
+</mat-progress-spinner>
+<div fxLayout="column" fxFlex *ngIf="booksList.length > 0">
+  <h2 class="page-title">Books List Master Detail Page</h2>
+  <mat-sidenav-container flexLayout-="row" fxFlex class="books-list">
+    <mat-sidenav mode="side" opened>
+      <mat-nav-list>
+        <mat-list-item *ngFor="let book of booksList" (click)="selectedBook = book">
+          <img mat-list-avatar src="{{serverPath}}/image/book/{{book.id}}.png" />
+
+          <h2 mat-line>{{book.title}}</h2>
+          <p mat-line> {{book.authors}} </p>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+    <div class="books-list-item" fxFlex>
+      <div *ngIf="selectedBook" class="books-list-item--detail" fxLayout="row" fxFlex.sm="column">
+        <div class="books-list-item--coverimage">
+          <img src="{{serverPath}}/image/book/{{selectedBook.id}}.png" />
+        </div>
+        <div class="books-list-item--content" fxFlex>
+          <h3>{{selectedBook.title}}</h3>
+          <p>{{selectedBook.authors}}</p>
+          <p>{{selectedBook.published}}</p>
+          <p>ISBN: {{selectedBook.isbn}}</p>
+          <p>{{selectedBook.description}}</p>
+
+          <h4>Our Price: <span style="color: #db3208;">$<span>
+            {{selectedBook.ourPrice | number : '1.2-2'}}
+          </span></span></h4>
+          <p>List Price: <span style="text-decoration:line-through;">$<span>{{selectedBook.listPrice | number : '1.2-2'}}</span></span>
+          </p>
+          <p>You Save: $<span>{{selectedBook.listPrice-book | number : '1.2-2'}}</span></p>
+          <span>Qty: </span>
+          <select [(ngModel)]="qty" class="browser-default" style="width:50px; display:inline;">
+            <option *ngFor="let x of numberList" [ngValue]="x">{{x}}</option>
+          </select>
+
+
+          <h4 *ngIf="selectedBook?.inStockNumber>10" style="color:green;">In Stock</h4>
+          <h4 *ngIf="selectedBook?.inStockNumber<10 && selectedBook.inStockNumber>0" style="color:green;">Only <span>{{book?.inStockNumber}}</span> In Stock</h4>
+          <h4 *ngIf="selectedBook?.inStockNumber==0" style="color:darkred;">Unavailable</h4>
+          <button  mat-raised-button [disabled]="selectedBook?.inStockNumber==0||!loggedIn" (click)="onAddToCart()" class="mat-primary">Add to Cart</button>
+
+
+
+        </div>
+      </div>
+    </div>
+  </mat-sidenav-container>
+
+
+
+
+</div>

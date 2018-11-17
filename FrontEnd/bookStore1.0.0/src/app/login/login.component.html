@@ -1,0 +1,30 @@
+
+
+<div class="app-content">
+	<a  target="blank">
+		<img style="position: absolute; top: 0; right: 0; border: 0;" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png">
+	</a>
+	<div  [hidden]="loggedIn" class="group">
+
+		<form role="form" (ngSubmit)="onSubmit()"><br>
+			<mat-input-container>
+				<input type="text" matInput [(ngModel)]="credential.username" name="username" id='username' placeholder="Your Username">
+				<mat-placeholder>
+					<i class="material-icons app-input-icon">face</i>Username
+				</mat-placeholder>
+			</mat-input-container><br><br>
+			<mat-input-container>
+				<input type="password" matInput [(ngModel)]="credential.password" name="password" id='password' placeholder="Your Password">
+				<mat-placeholder >
+					<i class="material-icons app-input-icon">lock_open</i>Password
+				</mat-placeholder>
+			</mat-input-container><br><br>
+			<button mat-raised-button color="warn" type="submit" name="action">LOGIN</button><br><br>
+			<span id="err"><small></small></span>
+			<mat-slide-toggle color="primary"><small>Remember me!</small></mat-slide-toggle>
+		</form >
+	</div>
+	<div [hidden]="!loggedIn">
+		<h2>You have logged in with Success!</h2>
+	</div>
+</div>

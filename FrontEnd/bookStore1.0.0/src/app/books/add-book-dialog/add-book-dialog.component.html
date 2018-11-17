@@ -1,0 +1,127 @@
+<h3>Add Book</h3>
+<form #form="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+
+  <div fxLayout="column" fxLayoutGap="8px">
+
+    <div fxLayout="row" fxLayoutGap="16px">
+      <mat-input-container>
+        <input matInput id="title" type="text" required [(ngModel)]="newBook.title" name="title" 
+        placeholder="Title">
+      </mat-input-container>
+
+
+
+      <mat-input-container>
+        <input matInput id="author" type="text" required [(ngModel)]="newBook.author" name="author" placeholder="Author">
+      </mat-input-container>
+
+
+      <mat-input-container>
+        <input matInput id="publisher" type="text" required [(ngModel)]="newBook.publisher" name="publisher" placeholder="Publisher">
+      </mat-input-container>
+
+
+ </div>
+    <div fxLayout="row" fxLayoutGap="16px">
+
+
+
+        <mat-form-field>
+        <input matInput [matDatepicker]="picker"  id="publicationDate"  required [(ngModel)]="newBook.publicationDate" name="publicationDate" placeholder="PublicationDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      
+
+
+
+
+
+   <mat-input-container>
+        <input matInput id="ourPrice" type="number" [(ngModel)]="newBook.ourPrice" name="ourPrice" step="0.01" placeholder="Our Price">
+      </mat-input-container>
+
+
+
+      <mat-input-container>
+        <input matInput id="shippingWeight" type="number" [(ngModel)]="newBook.shippingWeight" name="shippingWeight" step="0.01" placeholder="Shipping Weight">
+      </mat-input-container>
+   
+      
+
+</div>
+    <div fxLayout="row" fxLayoutGap="16px">
+
+      <mat-input-container>
+        <input matInput id="pageNumber" type="number" [(ngModel)]="newBook.numberOfPages" name="numberOfPages" step="1" placeholder="Number of Pages">
+      </mat-input-container>
+
+      <mat-input-container>
+        <input matInput id="isbn" type="text" required [(ngModel)]="newBook.isbn" name="isbn" placeholder="ISBN">
+      </mat-input-container>
+
+
+
+      <mat-input-container>
+        <input matInput id="listPrice" type="number" [(ngModel)]="newBook.listPrice" name="listPrice" step="0.01" placeholder="List Price">
+      </mat-input-container>
+
+    </div>
+<br>
+
+        <div fxLayout="row" fxLayoutGap="16px">
+
+   
+
+   <mat-select placeholder="Category" id="category" name="category" [(ngModel)]="newBook.category">
+        <mat-option value="Management">Management</mat-option>
+        <mat-option value="Fiction">Fiction</mat-option>
+        <mat-option value="Engineering">Engineering</mat-option>
+        <mat-option value="Programming">Programming</mat-option>
+        <mat-option value="Arts &amp; Literature">Arts &amp; Literature</mat-option>
+      </mat-select>
+
+      <mat-select placeholder="Format" id="format" name="format" [(ngModel)]="newBook.format">
+        <mat-option value="paperback">Paperback</mat-option>
+        <mat-option value="hardcover">Hardcover</mat-option>
+      </mat-select>
+
+
+      <mat-select placeholder="Language" id="language" name="language" [(ngModel)]="newBook.language">
+        <mat-option value="english">English</mat-option>
+        <mat-option value="spanish">Spanish</mat-option>
+      </mat-select>
+</div>
+<br>
+
+    <div fxLayout="row" fxLayoutGap="16px">
+
+      <mat-input-container>
+        <input matInput id="inStockNumber" type="number" [(ngModel)]="newBook.inStockNumber" name="inStockNumber" step="0.01" placeholder="Numbers In Stock">
+      </mat-input-container>
+
+
+
+
+
+      <mat-slide-toggle [color]="color" [checked]="checked" [disabled]="disabled" [(ngModel)]="newBook.active" name="active">Active</mat-slide-toggle>
+
+</div>
+<div fxLayout="row" fxLayoutGap="33px">
+
+  <mat-input-container>
+    <textarea matInput id="description" [(ngModel)]="newBook.description" name="description" placeholder="Description" required></textarea>
+  </mat-input-container>
+</div>
+
+<div fxLayout="row" fxLayoutGap="16px">
+  <input  id="tile" type="file" id="bookImage" name="bookImage" (change)="uploadImageService.fileChangeEvent($event)">
+  <br><br>
+</div>
+</div>
+
+<mat-dialog-actions align="end">
+  <button mat-button type="button" (click)="dialogRef.close()">Cancel</button>
+  <button mat-button color="accent"  mat-raised-button type="submit">Save Book</button>
+</mat-dialog-actions>
+</form>
