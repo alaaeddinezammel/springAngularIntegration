@@ -4,6 +4,11 @@ springboot angular4 mysql redis spring security Java Mail angular4  Paypal Sdk  
 
 
 
+
+
+
+
+
 run mysql (wamp)
 
 creat data base called bookstoreapi
